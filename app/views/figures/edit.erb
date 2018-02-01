@@ -1,0 +1,13 @@
+Edit Figure:
+
+<%= @figure.name %>
+<% @figure.landmarks.each do |landmark| %>
+  <%= landmark.name %>
+<% end %>
+
+<form action="/figures/<%=@figure.id%>" method="post">
+  <input id="hidden" type="hidden" name="_method" value="patch">
+  <input type="text" name="figure[name]">
+  <input type="text" name="figure[landmarks][]">
+  <input type="submit" value="submit">
+</form>
