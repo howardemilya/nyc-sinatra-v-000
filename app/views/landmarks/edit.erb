@@ -1,0 +1,19 @@
+Edit Landmark:
+<%= @landmark.name %>
+<%= @landmark.year_completed %>
+
+<form action="/landmarks/<%=@landmark.id%>" method="post">
+  <input id="hidden" type="hidden" name="_method" value="patch">
+  New Landmark Name: <input type="text" name="landmark[name]" id="name">
+<br>
+  Change Year Completed: <input type="text" name="landmark[year_completed]" id="year_completed">
+  Select Exitsing Figure:
+  <br>
+  <% Figure.all.each do |figure| %>
+    <input type="radio" name="landmark[figure_ids]" value="<%=figure.id%>" id="figure_<%=figure.id%>"><%= figure.name %></input><br>
+  <% end %>
+  New Figure: <input type="text" name="figure[name]" id="new_figure">
+  <br>
+
+  <input type="submit" value="Edit Landmark">
+</form>
